@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">EMPLOYEE LIST</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>image</th>
+            <th>id</th>
+            <th>Name</th>
+            <th>Department</th>
+           
+            <th>Salary</th>
+            
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+        {%for emp in employees%}
+        <tr>
+           
+            {%if emp.profile_pic%}
+            <td>
+            
+                <img src="{{emp.profile_pic.url}}" alt="" width="80%" height="150px">
+            </td>
+            
+            {%endif%}
+        
+            
+            <td>{{emp.id}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.department}}</td>
+            <td>{{emp.salary}}</td>
+            <td>{{emp.email}}</td>
+            <td>
+                <a href="{%url 'emp-remove' emp.id%}" class="btn btn-outline-secondary">Delete</a>
+                <a href="{%url 'emp-detail' emp.id%}" class="btn btn-outline-secondary">Detail</a>
+                <a href="{%url 'emp-edit' emp.id%}" class="btn btn-outline-secondary">EDIT</a>
+             
+            </td>
+            
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+</body>
+</html>
